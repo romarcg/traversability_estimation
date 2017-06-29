@@ -2,7 +2,9 @@
 
 > **All the supplemented material is presented anonymously**
 
-(This is the version of the document submission with high quality images.)[submission/submission_224.pdf]
+[This is the version of the document submission with high-quality images.](submission/submission_224.pdf)
+
+This repository provides: media material of the experiments on real elevation maps and real robots ((media)[#Media]); files to generate the training and evaluation datasets ((data)[#Data]); and the source code to generate hegithmaps, generate the dataset, defined and trained the CNN network; evaluate the trained network; and visualize the results as traversability maps and 3D rendering ((code)[#Code])
 
 ## Media
 
@@ -12,7 +14,7 @@ We provide:
 ### a video demonstration of the experiments on the real robot
 
 
-### an animation of the traversability maps of the quarry dataset for 32 orientations:
+### an animation of the traversability maps for the quarry dataset (32 orientations):
 
 
 ### high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots
