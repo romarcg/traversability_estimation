@@ -4,7 +4,11 @@
 
 [This is the version of the document submission with high-quality images.](submission/submission_224.pdf)
 
-This repository provides: media material of the experiments on real elevation maps and real robots ([media](#media)); files to generate the training and evaluation datasets ([data](#mata)); and the source code to generate hegithmaps, generate the dataset, defined and trained the CNN network; evaluate the trained network; and visualize the results as traversability maps and 3D rendering ([code](#code))
+This repository provides: 
+* media material of the experiments on real elevation maps and real robots ([media](#media)),
+* files to generate the training and evaluation datasets ([data](#mata)), 
+* and the source code to generate hegithmaps, generate the dataset, defined and trained the CNN network; evaluate the trained network; and visualize the results as traversability maps and 3D rendering ([code](#code))
+  * verify the (software requirements)(#software-requirements) to test this code
 
 ## Media
 
@@ -33,9 +37,15 @@ In this folder we provide:
 
 Code for simulating the Pioneer 3AT robot on a heightmap. 
 
-This code can be accessed as a docker image that will setup all the needed libraries:
+This code can be accessed as a docker image that setups all the needed libraries:
 
-Or by copying the simulation folder files to an existing ros+gezebo setup.
+> [link to docker image](link)
+
+Or by copying the `simulation` folder files to an existing ros+gezebo setup.
+
+### heigthmap generation
+
+This folder contains a document explaining in detail the procedural generation of heightmaps and a script that implements such procedure.
 
 ### dataset generation
 
