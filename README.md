@@ -42,7 +42,7 @@ This code can be accessed as a docker image that setups all the needed libraries
 
 > [link to docker image](link)
 
-Or by copying the `simulation` folder files to an existing ros+gezebo setup.
+Or by copying the `simulation` folder files to an existing ros+gazebo setup.
 
 ### heigthmap generation
 
@@ -84,4 +84,4 @@ In order to use the provided scripts, these are the list of requirements:
   * scikit-learn 0.18.1
   * scikit-image 0.13.0
   * joblib 0.11
-
+  * mayavi
