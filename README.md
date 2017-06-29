@@ -2,13 +2,14 @@
 
 > **All the supplemented material is presented anonymously**
 
-[This is the version of the document submission with high-quality images.](submission/submission_224.pdf)
+
+> [This is the version of the document submission with high-quality images.](submission/submission_224.pdf)
 
 This repository provides: 
 * media material of the experiments on real elevation maps and real robots ([media](#media)),
 * files to generate the training and evaluation datasets ([data](#mata)), 
 * and the source code to generate hegithmaps, generate the dataset, defined and trained the CNN network; evaluate the trained network; and visualize the results as traversability maps and 3D rendering ([code](#code))
-  * verify the (software requirements)(#software-requirements) to test this code
+  * verify the [software requirements](#software-requirements) to test this code
 
 ## Media
 
