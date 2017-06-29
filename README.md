@@ -7,7 +7,7 @@
 
 This repository provides: 
 * media material of the experiments on real elevation maps and real robots ([media](#media)),
-* files to generate the training and evaluation datasets ([data](#mata)), 
+* heightmaps and csv files to generate the training and evaluation datasets ([data](#mata)), 
 * and the source code to generate hegithmaps, generate the dataset, defined and trained the CNN network; evaluate the trained network; and visualize the results as traversability maps and 3D rendering ([code](#code))
   * verify the [software requirements](#software-requirements) to test this code
 
