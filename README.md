@@ -1,12 +1,12 @@
-#Complementary material for the submission 224 to CoRL 2017
+# Complementary material for the submission 224 to CoRL 2017
 
 > **All the supplemented material is presented anonymously**
 
 [This is the version of the document submission with high-quality images.](submission/submission_224.pdf)
 
-This repository provides: media material of the experiments on real elevation maps and real robots ([media](#Media)); files to generate the training and evaluation datasets ([data](#Data)); and the source code to generate hegithmaps, generate the dataset, defined and trained the CNN network; evaluate the trained network; and visualize the results as traversability maps and 3D rendering ([code](#Code))
+This repository provides: media material of the experiments on real elevation maps and real robots ([media](#media)); files to generate the training and evaluation datasets ([data](#mata)); and the source code to generate hegithmaps, generate the dataset, defined and trained the CNN network; evaluate the trained network; and visualize the results as traversability maps and 3D rendering ([code](#code))
 
-##Media
+## Media
 
 We provide: 
 
@@ -20,12 +20,12 @@ We provide:
 **high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots**
 
 
-##Data
+## Data
 
 This folder contains the heightmaps (grayscale images) and the csv files with the data from each simulated trajectory
 
 
-##Code
+## Code
 
 In this folder we provide:
 
