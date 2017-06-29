@@ -3,7 +3,7 @@
 > **All the supplemented material is presented anonymously**
 
 
-> [This is the version of the document submission with high-quality images.](submission/submission_224.pdf)
+> This is the [version of the document submission](submission/submission_224.pdf) with high-quality images.
 
 This repository provides: 
 * media material of the experiments on real elevation maps and real robots ([media](#media)),
