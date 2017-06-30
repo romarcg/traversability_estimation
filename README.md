@@ -9,13 +9,13 @@ This repository provides:
 1. media material of the experiments on the real robot and real elevation maps ([media](#media)),
 2. heightmaps and csv files to generate the training and evaluation datasets ([data](#mata)), 
 3. and the source code to each module of our traversability estimation framework ([code](#code)):
-  * simulation and data generation
-  * heigthmaps generation, 
-  * datasets generation, 
-  * definition and training of the CNN classifier,
-  * evaluation of the trained network, 
-  * and visualization of the results as traversability maps and 3D renderings 
-  > verify the [software requirements](#software-requirements) to test the code
+   * simulation and data generation
+   * heigthmaps generation, 
+   * datasets generation, 
+   * definition and training of the CNN classifier,
+   * evaluation of the trained network, 
+   * and visualization of the results as traversability maps and 3D renderings 
+   > verify the [software requirements](#software-requirements) to test the code
 
 ## Media
 
