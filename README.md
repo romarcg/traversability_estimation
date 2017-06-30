@@ -21,11 +21,12 @@ This repository provides:
 
 This is a selection of the available media of our traversability estimation framework: 
 
-**a video demonstration of the experiments on the real robot**
+**video demonstration of the experiments on the real robot**
 
 
-**an animation of the traversability maps for the quarry dataset (32 orientations)**
+**animation of the traversability maps for the quarry dataset (32 orientations)**
 
+**animation of the minimal traversability map for the quarry dataset**
 
 **high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots**
 
