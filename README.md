@@ -23,10 +23,13 @@ This is a selection of the available media of our traversability estimation fram
 
 **video demonstration of the experiments on the real robot**
 
-
-**animation of the traversability maps for the quarry dataset (32 orientations)**
-
 **animation of the minimal traversability map for the quarry dataset**
+
+![](media/min_traversability_pioneer.mp4 "Mining quarry")
+
+**animation of the traversability maps for 32 orientations on the quarry dataset**
+
+![](media/traversability_orientation_maps_pioneer.mp4 "Mining quarry")
 
 **high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots**
 
