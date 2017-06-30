@@ -44,7 +44,7 @@ In this folder we provide several subfolder for each module of our traversabilit
 
 ### simulation
 
-Code for simulating the Pioneer 3AT robot on a heightmap. 
+Code for simulating the Pioneer 3AT robot on a generated heightmap. 
 
 This code can be accessed as a docker image that setups all the needed libraries:
 
