@@ -82,7 +82,7 @@ debug = 0  # debug level for extra logging and intermedia plots, 0 no debuggin -
 
 multiprocessing = False # if True, we use jobs to generate dataset/calculate the traversability/ plot over a full map 
 
-multiprocessing_hm = np.zeros((100,100)) #a temporal way to initialize a shared image
+multiprocessing_hm = np.zeros((100,100)) # a temporal way to initialize a shared image
 
 sim_hm_mx_x = 5.0  # heightmap dimmensions (m) used in the simulation for generating training data
 sim_hm_mx_y = 5.0  # this will help to pass from sim coordinates to screen coordinates when generating datasets
@@ -160,8 +160,10 @@ def show(sample,hm):
     plt.close(fig)
 
 
-#%% Functions for CNN dataset generation
-###############################################
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#
+# Dataset generation fucntions
+#
 
 def transform_patch(patch,sz):
     t_patch=patch-patch[patch.shape[0]//2,patch.shape[1]//2]
@@ -471,14 +473,14 @@ def test_fitted_model_full_map_stride_cnn(fitted, heightmap_png, edges, resize, 
     startTime= time.time()
 
     '''
-    Description of SimilarityTransform states that the rotaiton angle is counter-clockwise,
-    however it does not behave like so. I have intentionally set the angle as negative. 
-    Be aware of this tweak and consider why the transformation for patch extraction behaves in
-    a different fashion. Angles from dataset are in radians and counter-clockwise so PI/2
-    means left orientation, while 3PI/2 means right orientation, if we do not invert the orientation,
-    skimiage transformation does the opposite. 
+    Description of SimilarityTransform states that the rotaiton angle is 
+    counter-clockwise, however it does not behave like so. Be aware of this 
+    issue and consider Angles from dataset are in radians and counter-clockwise 
+    so PI/2 means left orientation, while 3PI/2 means right orientation, if we 
+    do not invert the orientation,  skimiage transformation does the opposite. 
     
-    gazebo orientation frame is different from vrep (sic), 0 degrees is at the right and goes up counter-clockwise
+    gazebo orientation frame is different from vrep (sic), 0 degrees is at the 
+    right and goes up counter-clockwise
     '''
     tf = skimage.transform.SimilarityTransform(translation=[edges/2,edges/2], rotation=-rad_ori)
     tf_sk = skimage.transform.SimilarityTransform(translation=[10,10], rotation=-rad_ori)
@@ -516,7 +518,43 @@ def test_fitted_model_full_map_stride_cnn(fitted, heightmap_png, edges, resize, 
     #plt.show()
     return sk_hm_pure
 
-    
+   
+#%%
+# Generating the datasets for training and evaluation/real evaluation
+#
+height_scale_factor = 1.0
+dataset_training, heightmaps_training = generate_composite_dataset_cnn(training_meta_file)
+dataset_evaluation, heightmaps_evaluation = generate_composite_dataset_cnn(evaluation_meta_file)
+
+dataset_training.to_csv("dataset_training")                 #saving pandas dataframes for training and evluation
+dataset_evaluation.to_csv("dataset_evaluation")
+
+#evaluation_meta_file= "meta_evaluation_real.csv"
+#height_scale_factor = 3.0 #for the grave pitmax height is 3m
+#dataset_evaluation_real, heightmaps_evaluation_real = generate_composite_dataset_cnn(evaluation_meta_file_real)
+
+#dataset_evaluation_real.to_csv("dataset_evaluation_real")  #saving padnas dataframe for evaluation real
+#%%  
+# Selecting a subset of the evaluation dataset for evaluation
+#
+height_scale_factor = 1.0
+X_te,y_te=mktrte(dataset_evaluation, heightmaps_evaluation,10000,patch_size)
+
+np.save("X_te",X_te)    # saving evaluation X and y arrays
+np.save("y_te",y_te)
+
+# for the real evaluation dataset
+#height_scale_factor = 3.0
+#X_te_real,y_te_real=mktrte(dataset_evaluation_real, heightmaps_evaluation_real,10000,patch_size)
+#height_scale_factor = 1.0
+
+#np.save("X_te_real",X_te)
+#np.save("y_te_real",y_te)
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#
+# CNN architecture definition + Training
+#
 #%% 
 #  Definition of our neural network architecture
 #
@@ -537,28 +575,6 @@ model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy',
               optimizer="adadelta",
               metrics=['accuracy'])
-
-#%%
-# Generating the datasets for training and evaluation/real evaluation
-#
-height_scale_factor = 1.0
-dataset_training, heightmaps_training = generate_composite_dataset_cnn(training_meta_file)
-dataset_evaluation, heightmaps_evaluation = generate_composite_dataset_cnn(evaluation_meta_file)
-
-#evaluation_meta_file= "meta_evaluation_real.csv"
-#height_scale_factor = 3.0 #for the grave pitmax height is 3m
-#dataset_evaluation_real, heightmaps_evaluation_real = generate_composite_dataset_cnn(evaluation_meta_file_real)
-
-#%%  
-# Selecting a subset of the evaluation dataset for evaluation
-#
-height_scale_factor = 1.0
-X_te,y_te=mktrte(dataset_evaluation, heightmaps_evaluation,10000,patch_size)
-
-# for the real evaluation dataset
-#height_scale_factor = 3.0
-#X_te_real,y_te_real=mktrte(dataset_evaluation_real, heightmaps_evaluation_real,10000,patch_size)
-#height_scale_factor = 1.0
 
 #%%
 # CNN training
@@ -643,9 +659,6 @@ print ('-')
 print('acc:', sklearn.metrics.classification.accuracy_score(y_te[:,1],y_score_label))
 print('auc:', sklearn.metrics.roc_auc_score(y_te[:,1],y_score[:,1]))
 print(classification_report(y_te[:,1], y_score_label))
-
-
-
 
 print ('> evaluation (realworld) dataset ')
 y_score = model.predict(X_te_real)
