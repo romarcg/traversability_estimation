@@ -55,7 +55,7 @@ Code for simulating the Pioneer 3AT robot on a generated heightmap.
 
 This code can be accessed as a docker image that setups all the needed libraries:
 
-> [link to docker image](link)
+> `docker pull romarcg/traversability-ros-ubuntu-gazebo`
 
 or by copying the `simulation` folder files to an existing `ros+gazebo` setup.
 
