@@ -1,0 +1,311 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+
+    <!--physics type='ode'>
+     <real_time_factor>1</real_time_factor>
+     <max_step_size>0.01</max_step_size>
+     <real_time_update_rate>0</real_time_update_rate>
+     <gravity>0 0 -9.8</gravity>
+    </physics-->
+
+    <physics type='ode'>
+     <max_step_size>0.01</max_step_size>
+     <real_time_update_rate>100</real_time_update_rate>
+    </physics>
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="box1">
+      <static>true</static>
+      <pose>-3 0 0.03 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.06 0.06</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.06 0.06</size> </box> </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="box10">
+      <static>true</static>
+      <pose>-3 -2 0.015 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.06 0.03</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.06 0.03</size> </box> </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box12">
+      <static>true</static>
+      <pose>-3 2 0.06 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.06 0.12</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.06 0.12</size> </box> </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box2">
+      <static>true</static>
+      <pose>-1 0 0.03 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.085 0.06</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.085 0.06</size> </box> </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box20">
+      <static>true</static>
+      <pose>-1 -2 0.015 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.085 0.03</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.085 0.03</size> </box> </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box22">
+      <static>true</static>
+      <pose>-1 2 0.06 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.085 0.12</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.085 0.12</size> </box> </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box3">
+      <static>true</static>
+      <pose>1 0 0.03 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.15 0.06</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.15 0.06</size> </box> </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box30">
+      <static>true</static>
+      <pose>1 -2 0.015 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.15 0.03</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.15 0.03</size> </box> </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box32">
+      <static>true</static>
+      <pose>1 2 0.06 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.15 0.12</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.15 0.12</size> </box> </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="box4">
+      <static>true</static>
+      <pose>3 0 0.03 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.18 0.06</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.18 0.06</size> </box> </geometry>
+          <material>
+            <ambient>1 0 1 1</ambient>
+            <diffuse>1 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box40">
+      <static>true</static>
+      <pose>3 -2 0.015 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.18 0.03</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.18 0.03</size> </box> </geometry>
+          <material>
+            <ambient>1 0 1 1</ambient>
+            <diffuse>1 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box42">
+      <static>true</static>
+      <pose>3 2 0.06 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 0.18 0.12</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 0.18 0.12</size> </box> </geometry>
+          <material>
+            <ambient>1 0 1 1</ambient>
+            <diffuse>1 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <!--model name="box3">
+      <pose>63 63.0 10 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 1 1</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 1 1</size> </box> </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box4">
+      <pose>63 -63.0 10 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <box> <size>1 1 1</size> </box> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <box> <size>1 1 1</size> </box> </geometry>
+        </visual>
+      </link>
+    </model-->
+
+    <model name="heightmap">
+      <static>true</static>
+      <link name="link">
+
+        <collision name="collision">
+          <geometry>
+            <heightmap>
+              <uri>model://heightmaps/testmap.png</uri>
+              <!-- this is the size we want gazebo to render the image in, it does not have to match the image size, fix these values according to the intended resolution you are using. Values are in meters-->
+              <size>10 10 1.0</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+
+        <visual name="visual_abcedf">
+          <geometry>
+            <heightmap>
+              <use_terrain_paging>false</use_terrain_paging>
+              <texture>
+                <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <!--texture>
+                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <blend>
+                <min_height>2</min_height>
+                <fade_dist>2</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>2</fade_dist>
+              </blend-->
+              <uri>model://heightmaps/testmap.png</uri>
+              <size>10 10 1.0</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+          <material script='Gazebo/White'>
+            <emissive rgba='1.0 1.0 1.0 1.0'/>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
