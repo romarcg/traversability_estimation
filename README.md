@@ -21,18 +21,20 @@ This repository provides:
 
 This is a selection of the available media of our traversability estimation framework: 
 
-**video demonstration of the experiments on the real Pioneer 3AT robot**
+**video demonstration of the experiments on the real Pioneer 3AT robot (VIMEO link)**
 [![video demonstration of the experiments on the real robot](https://i.vimeocdn.com/video/643340195_640.webp)](https://vimeo.com/224311562 "Pioneer 3AT in real scenario")
 
-**animation of the minimal traversability map for the quarry dataset**
+**animation of the minimal traversability map for the quarry dataset (VIMEO link)**
 
-![](media/min_traversability_pioneer.mp4 "Mining quarry")
+[![animation of the minimal traversability map for the quarry dataset](https://i.vimeocdn.com/video/643336616_640.webp)](https://vimeo.com/224311774 "Minimal traversability map for the quarry dataset")
 
-**animation of the traversability maps for 32 orientations on the quarry dataset**
 
-![](media/traversability_orientation_maps_pioneer.mp4 "Mining quarry")
+**animation of the oriented traversability maps for 32 orientations on the quarry dataset (VIMEO link)**
 
-**high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots**
+[![animation of the oriented traversability maps for 32 orientations on the quarry dataset](https://i.vimeocdn.com/video/643336777_640.webp)](https://vimeo.com/224311892 "Oriented traversability maps for the quarry dataset")
+
+
+<!--**high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots**-->
 
 
 > A larger number of visualizations can be generated/found in the `code`>`visualization` section of this repository.
