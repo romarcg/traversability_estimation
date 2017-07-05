@@ -4,7 +4,7 @@ Source code is divided in 5 sections:
 
 1. `simulation` contains scripts and packages needed to:
   * setup the simulated world
-  * simulate the pioneer 3AT on a generated hegithmap 
+  * simulate the pioneer 3AT on a generated heightmap 
   * run experiments and store the data on csv files
 
 > the content of this folder is already setup in the docker image: [link](#link)
@@ -13,7 +13,7 @@ Source code is divided in 5 sections:
 
 3. `dataset_generation_training` contains a script that takes the csv files and heightmaps, and generate the training and evaluation datasets
 
-4. `dataset_generation_training` contains a script that defines de CNN architecture and train the classifier using the generated dataset. This script generates and store a model file. Also, at the end of the script classifier evaluation metrics (stats) are computed.
+4. `dataset_generation_training` contains a script that defines the CNN architecture and train the classifier using the generated dataset. This script generates and store a model file. Also, at the end of the script classifier evaluation metrics (stats) are computed.
 
 > this process may take hours depending on the machine capabilities
 
