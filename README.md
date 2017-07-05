@@ -21,7 +21,8 @@ This repository provides:
 
 This is a selection of the available media of our traversability estimation framework: 
 
-**video demonstration of the experiments on the real robot**
+**video demonstration of the experiments on the real Pioneer 3AT robot**
+[![video demonstration of the experiments on the real robot](https://vimeo.com/224311562/0.jpg)](https://vimeo.com/224311562 "Pioneer 3AT in real scenario")
 
 **animation of the minimal traversability map for the quarry dataset**
 
