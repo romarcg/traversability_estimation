@@ -7,7 +7,7 @@
 
 This repository provides: 
 1. media material of the experiments on the real robot and real elevation maps ([media](#media)),
-2. heightmaps and csv files to generate the training and evaluation datasets ([data](#mata)), 
+2. heightmaps and csv files to generate the training and evaluation datasets ([data](#data)), 
 3. and the source code to each module of our traversability estimation framework ([code](#code)):
    * simulation and data generation,
    * heigthmaps generation, 
