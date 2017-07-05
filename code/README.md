@@ -23,4 +23,4 @@ Source code is divided in 5 sections:
 
 4. `visualization` contains script to visualize traversability representations (such as traversability maps or min traversability overlays) as 3D renderings on testing heightmaps (e.g. mining quarry)
 
-> The mining quarry heightmap is included as sample in all the scripts for quick setup and testing
+> The mining quarry heightmap is included as an example in all the scripts for quick setup and testing
