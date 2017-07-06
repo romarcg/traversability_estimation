@@ -651,6 +651,8 @@ class Visualization(HasTraits):
 #
 # First setup some needed variables for a specfic heighmap
 #
+# note: oriented traversability maps need to be inside the folder `hm_name_noext`
+# and inside a subfolder called /animation_mayavi
 
 # for the quarry
 heightmap_png =  heightmaps_folder+'quarry_cropped4_scaled2cm.png'
