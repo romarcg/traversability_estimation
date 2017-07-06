@@ -1,3 +1,6 @@
+#
+# Dockerfile to build the image host in docker hub: romarcg/traversability-ros-ubuntu-gazebo
+#
 FROM  ros:kinetic
 RUN apt-get -y update && apt-get install -y ros-kinetic-desktop-full
 CMD source /opt/ros/kinetic/setup.bash
@@ -14,7 +17,7 @@ RUN apt-get -y update && apt-get install -y gedit eog nautilus
 ##
 # workspace setup
 ##
-RUN  /bin/bash -c "mkdir -p ~/catkin_ws/src ; source /opt/ros/kinetic/setup.bash ; cd ~/catkin_ws/src ; source /opt/ros/kinetic/setup.bash ; catkin_init_workspace"
+RUN  /bin/bash -c "mkdir -p ~/catkin_ws/src ; source /opt/ros/kinetic/setup.bash ; cd ~/catkin_ws/src ; source /opt/ros/kinetic/setup.bash ; catkin_init_workspace; mkdir -p ~/dataset_cvs"
 COPY src /root/catkin_ws/src
 ##
 # For rviz or other software (e.g. gazebo) that need the use of xserver
