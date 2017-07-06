@@ -34,6 +34,10 @@ This is a selection of the available media of our traversability estimation fram
 
 [![animation of the oriented traversability maps for 32 orientations on the quarry dataset](https://i.vimeocdn.com/video/643336777_640.webp)](https://vimeo.com/224311892 "Oriented traversability maps for the quarry dataset")
 
+**video of Pioneer 3AT on simulated heightmaps (vimeo link)**
+
+[![video of Pioneer 3AT on simulated heightmaps](https://i.vimeocdn.com/video/643517187_640.webp)](https://vimeo.com/224451017 "Pioneer 3AT on simulated heightmaps")
+
 
 <!--**high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots**-->
 
