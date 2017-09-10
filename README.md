@@ -1,9 +1,9 @@
-# Complementary material for the submission 224 to CoRL 2017
+# Complementary material for the submission to RA-L - ICRA 2018
 
 > **All the supplemented material is presented anonymously**
 
 
-> This is the **[version of the document submission](submission/submission_224.pdf)** with **high-quality figures**.
+> This is the **[version of the document submission](submission/submission_ral_icra2018.pdf)** with **high-quality figures**.
 
 This repository provides: 
 1. media material of the experiments on the real robot and real elevation maps ([media](#media)),
