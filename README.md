@@ -1,4 +1,4 @@
-# Complementary material for the submission to RA-L - ICRA 2018
+# Complementary material for the submission entitled "Learning Ground Traversability from Simulations" to RA-L - ICRA 2018
 
 > **All the supplemented material is presented anonymously**
 
