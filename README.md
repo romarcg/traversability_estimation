@@ -1,42 +1,57 @@
-# Complementary material for the submission entitled "Learning Ground Traversability from Simulations" to RA-L - ICRA 2018
+> This repository contains complementary material for the corresponding submission.
 
-> **All the supplemented material is presented anonymously**
+> **[Version of the document submission](submission/submission_ral_icra2018.pdf)** with **high-quality figures**.
 
 
-> This is the **[version of the document submission](submission/submission_ral_icra2018.pdf)** with **high-quality figures**.
+## Learning Ground Traversability from Simulations
 
-This repository provides: 
+Mobile robots operating on unstructured terrain must predict which areas of the environment they are able to pass in order to plan feasible paths and to react to unforeseen terrain patterns.
+We address traversability estimation as a heightmap classification problem: we build a convolutional neural network that, given an image representing the heightmap of a terrain patch, predicts whether the robot will be able to traverse such patch from left to right.
+The classifier is trained for a specific wheeled robot model (but may implement any other locomotion type such as tracked, legged, snake-like), using simulation data on a variety of procedurally generated training terrains; once trained, the classifier can quickly be applied to patches extracted from unseen large heightmaps, in multiple orientations, thus building oriented traversability maps.
+We quantitatively validate the approach on real-world elevation datasets and implement a path planning approach that employs our traversability estimation.
+
+## Repository content:
+
+<!--**This repository provides:**-->
 1. media material of the experiments on the real robot and real elevation maps ([media](#media)),
-2. heightmaps and csv files to generate the training and evaluation datasets ([data](#data)), 
+2. heightmaps and csv files to generate the training and evaluation datasets ([data](#data)),
 3. and the source code to each module of our traversability estimation framework ([code](#code)):
    * simulation and data generation,
-   * heightmap generation, 
-   * dataset generation, 
+   * heightmap generation,
+   * dataset generation,
    * definition, training and evaluation of the CNN classifier,
-   * generation of traversability representations such as oriented traversability maps and minimal traversability maps, 
-   * and visualization of the results as 3D renderings 
+   * generation of traversability representations such as oriented traversability maps and minimal traversability maps,
+   * and visualization of the results as 3D renderings
    > verify the [software requirements](#software-requirements) to test the code
 
 ## Media
 
-This is a selection of the available media of our traversability estimation framework: 
+This is a selection of the available media of our traversability estimation framework:
 
 **video demonstration of the experiments on the real Pioneer 3AT robot (vimeo link)**
 
-[![video demonstration of the experiments on the real robot](https://i.vimeocdn.com/video/643340195_640.webp)](https://vimeo.com/224311562 "Pioneer 3AT in real scenario")
+{% include vimeoPlayer.html id=224311562 %}
+
+<!--[![video demonstration of the experiments on the real robot](https://i.vimeocdn.com/video/643340195_640.webp)](https://vimeo.com/224311562 "Pioneer 3AT in real scenario")-->
 
 **animation of the minimal traversability map for the quarry dataset (vimeo link)**
 
-[![animation of the minimal traversability map for the quarry dataset](https://i.vimeocdn.com/video/643336616_640.webp)](https://vimeo.com/224311774 "Minimal traversability map for the quarry dataset")
+{% include vimeoPlayer.html id=224311774 %}
+
+<!--[![animation of the minimal traversability map for the quarry dataset](https://i.vimeocdn.com/video/643336616_640.webp)](https://vimeo.com/224311774 "Minimal traversability map for the quarry dataset")-->
 
 
 **animation of the oriented traversability maps for 32 orientations on the quarry dataset (vimeo link)**
 
-[![animation of the oriented traversability maps for 32 orientations on the quarry dataset](https://i.vimeocdn.com/video/643336777_640.webp)](https://vimeo.com/224311892 "Oriented traversability maps for the quarry dataset")
+{% include vimeoPlayer.html id=224311892 %}
+
+<!--[![animation of the oriented traversability maps for 32 orientations on the quarry dataset](https://i.vimeocdn.com/video/643336777_640.webp)](https://vimeo.com/224311892 "Oriented traversability maps for the quarry dataset")-->
 
 **video of Pioneer 3AT on simulated heightmaps (vimeo link)**
 
-[![video of Pioneer 3AT on simulated heightmaps](https://i.vimeocdn.com/video/643517187_640.webp)](https://vimeo.com/224451017 "Pioneer 3AT on simulated heightmaps")
+{% include vimeoPlayer.html id=224451017 %}
+
+<!--[![video of Pioneer 3AT on simulated heightmaps](https://i.vimeocdn.com/video/643517187_640.webp)](https://vimeo.com/224451017 "Pioneer 3AT on simulated heightmaps")-->
 
 
 <!--**high-quality images of the evaluation heightmaps (surfaces) and of the experiments on real robots**-->
@@ -55,7 +70,7 @@ In this folder we provide several sub-folders for each module of our traversabil
 
 ### simulation
 
-Code for simulating the Pioneer 3AT robot on a generated heightmap. 
+Code for simulating the Pioneer 3AT robot on a generated heightmap.
 
 This code can be accessed as a docker image that setups all the needed libraries:
 
