@@ -28,7 +28,7 @@ We quantitatively validate the approach on real-world elevation datasets and imp
 
 
 
-This is a selection of the available media of our traversability estimation framework:
+This is a selection of available media of our traversability estimation framework:
 
 **Reachability overlay and paths for selected points on the Slope map**
 

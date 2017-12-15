@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on May 29 09:12:09 2017
-
-@author: omar
-"""
 
 # mayavi libraries for 3D renderings
 import os
@@ -30,6 +25,9 @@ import yaml
 import operator
 
 import csv
+
+import networkx as nx
+import json
 #%% utility functions
 
 def readTerrain(name,pixelsize=0.02,max_height=1.0):
@@ -931,3 +929,171 @@ visualizeReachabilityonTerrain(terrain, "inputs/reachability/quarry_stride_14-0.
 
 r_x, r_y = [offset[0]*pixelsize+pixelsize*stride*80 ,offset[1]*pixelsize+pixelsize*stride*5]
 visualizeReachabilityonTerrain(terrain, "inputs/reachability/quarry_stride_14-0.95-(5, 80)-reach.yaml", offset, pixelsize, stride, (r_x,r_y,0.3,0.8,250), 0.2, out_name = "quarry_stride_14-0.95-(5, 80)-reach")
+
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#
+# For visualizing the reachability and the paths on the slope
+#
+#
+
+def readTerrain(name,pixelsize=0.02):
+    hm = skimage.io.imread(heightmap_png)
+    print(hm.min(),hm.max())
+    
+    if hm.ndim > 2: #multiple channels
+        hm=skimage.color.rgb2gray(hm) #rgb2gray does the averaging and channel reduction
+    
+    elif hm.ndim == 2: #already in one channel
+        #this is mostly for the images treated in matlab beforehand (one channel + grayscale + 16bit)
+        if hm.dtype == 'uint8':
+            divided = 255.0
+        if hm.dtype == 'uint16':
+            divided = 65535.0
+        hm=hm/divided
+    
+    hm = hm * height_scale_factor
+    
+    tpixelsize=pixelsize
+    hm=skimage.transform.resize(hm,(np.array(hm.shape)*tpixelsize/pixelsize).astype(int))
+    hm=hm-np.nanmin(hm)
+    
+    return hm
+
+def create_mask_reachability(json_str, img_size, patch_size, stride):
+    attrs = json.loads(json_str)
+    mat = np.array([list(e) for e in attrs])
+    mask = np.zeros((img_size[0],img_size[1]),dtype='float64') 
+    (lx, ly) = np.shape(mat)
+    print(np.shape(mat),lx,ly)
+    pol_s = int(stride/2)+0.5
+    for i in range(0,lx):
+        for j in range(0,ly):
+            px = int(patch_size/2)+(i*stride)
+            py = int(patch_size/2)+(j*stride)
+            cx = ( px - pol_s, px + pol_s, px + pol_s, px - pol_s, px - pol_s)
+            cy = ( py - pol_s, py - pol_s, py + pol_s, py + pol_s, py - pol_s)
+            rr, cc = skimage.draw.polygon( cx,cy, shape = mask.shape)
+            mask[rr,cc] = mat[i,j]
+    return mask
+
+
+def rviz_to_mayavi(point, max_x, max_y):
+    mx = max_y - point[0]
+    my = max_x - point[1]
+    mz = point[2]
+    return (mx,my,mz)
+
+
+def makeRobot2(x,y,z,length,angle=0,fontsize=0.4):
+    vertices=np.array([[0,0,1],[0,1,0],[-3,0,0],[0,-1,0]]).astype(float)
+    verticesp=np.copy(vertices)
+    verticesp[:,0]=vertices[:,0]*math.cos(angle)-vertices[:,1]*math.sin(angle)
+    verticesp[:,1]=vertices[:,1]*math.cos(angle)+vertices[:,0]*math.sin(angle)
+    vertices = verticesp/3*length+np.array([x,y,z])
+    triangles=[[0,1,3],[0,1,2],[0,3,2],[3,1,2]]
+    
+    text = mlab.text3d(vertices[2,0]+0.1, vertices[2,1]+0.1, vertices[2,2], "robot", scale=fontsize, color=(0,0,0))
+    
+    # plot the stol file of the pioneer p3at robot
+    STLfile="pioneer3at.stl"
+    f=open(STLfile,'r')
+    
+    x=[]
+    y=[]
+    z=[]
+    
+    for line in f:
+    	strarray=line.split()
+    	if strarray[0]=='vertex':
+    		x=np.append(x,np.double(strarray[1])*length)
+    		y=np.append(y,np.double(strarray[2])*length)
+    		z=np.append(z,np.double(strarray[3])*length)
+    
+    triangles=[(i, i+1, i+2) for i in range(0, len(x),3)]
+    
+    mlab.triangular_mesh(vertices[0,0]+  x*math.cos(math.radians(angle))-y*math.sin(math.radians(angle))  , vertices[0,1]+ y*math.cos(math.radians(angle))+x*math.sin(math.radians(angle)) , vertices[0,2]+z, triangles, color=(0.2,0.2,1.0))
+    mlab.show()
+    
+    return()
+
+
+def visualizeTerrainOpt(terrain, pixelsize, mask, fig=None, fontsize=0.4, robot_pose=(-1,0,0,0.8,0)):
+    """Draws a surface colored according to mask using a custom colormap
+    Inspired by http://gael-varoquaux.info/programming/mayavi-representing-an-additional-scalar-on-surfaces.html """
+    
+    if(fig is None):
+        fig = mlab.figure()
+    
+    fig.scene.background = (1,1,1)
+    
+    y, x = np.meshgrid(np.arange(terrain.shape[0])*pixelsize,np.arange(terrain.shape[1])*pixelsize)
+    s = mlab.mesh(x, y, terrain, scalars=mask) # We use a mesh, not a surf. Note: it's less efficient
+    
+    colormap=np.tile(np.array([180,180,180,255]),[256,1]) # all gray
+    colormap[:,0]=np.linspace(180,100,256)
+    colormap[:,1]=np.linspace(180,190,256)
+    colormap[:,2]=np.linspace(180,255,256)
+
+    s.module_manager.scalar_lut_manager.lut.table = colormap
+    s.module_manager.scalar_lut_manager.lut.range=np.array([0.0,1.0])
+    s.actor.property.interpolation = 'phong'
+    s.actor.property.specular = 0.0
+    s.actor.property.specular_power = 10
+    s.actor.property.ambient_color = (1,1,1)
+
+    s.actor.property.ambient = 0.02
+    
+    mlab.colorbar(s, title=None, orientation='vertical', nb_labels=3, nb_colors=None, label_fmt='%.1f')
+    
+    square=np.array([[0,0],[1,0],[1,1],[0,1]])[[0,1,2,3,0],:]
+    square=np.hstack((square*np.array([[np.max(x),np.max(y)]]), np.zeros((5,1))))
+    base=mlab.plot3d(square[:,0], square[:,1], square[:,2], color=(0,0,0), line_width=2)
+    for i in range(4):
+        p=np.mean(square[[i,i+1],:],axis=0)
+        d=np.linalg.norm(square[i+1,:]-square[i+0,:])
+        mlab.text3d(p[0], p[1], p[2], "{:.1f}m".format(d), scale=fontsize, color=(0,0,0))
+    height=mlab.plot3d(np.array([0.0,0.0]), np.array([0.0,0.0]), np.array([0.0,np.nanmax(terrain)]), color=(0,0,0), line_width=2)
+    mlab.text3d(0.0, 0.0, np.nanmax(terrain)*1.0, "{:.1f}m".format(np.nanmax(terrain)), scale=fontsize, color=(0,0,0))
+    
+    makeRobot2(robot_pose[0],robot_pose[1],robot_pose[2],robot_pose[3], angle=robot_pose[4], fontsize=fontsize)
+        
+    from tvtk.api import tvtk
+    fig.scene.interactor.interactor_style = tvtk.InteractorStyleTerrain()
+
+
+###
+
+heightmap_png = "inputs/idsia_outdoors_smoothed7.png"
+
+height_scale_factor = 2.5
+pixel_size = 0.02
+
+im = readTerrain(heightmap_png, pixel_size)
+
+map_max_x = 3.56
+map_max_y = 3.56
+
+mask_alpha=skimage.io.imread("inputs/mask_alpha.png")[:,:,3].astype(float)/255
+im = im*mask_alpha
+im[im == 0] = np.nan
+
+net_data = nx.read_graphml("paths/Slope_reach_path.graphml")
+
+attributes_reach = nx.get_node_attributes(net_data, 'reach')
+attributes_position = nx.get_node_attributes(net_data, 'position')
+
+node = '1'
+mask = create_mask_reachability(attributes_reach[node], im.shape, 10, 2)
+
+skimage.io.imshow(mask)
+attrs = json.loads(attributes_position[node])
+source = np.array([float(e) for e in attrs])
+rpos = rviz_to_mayavi((source[0]*0.398876404,source[1]*0.398876404,0),map_max_x,map_max_y )
+print(source[0],source[1]," > ",  rpos)
+visualizeTerrain3(im, pixel_size, mask=mask, fontsize=0.2, robot_pose=(rpos[0],rpos[1],0.4,0.7,90))
+
+visualizePathsonTerrainOpt(im, net_data, node, map_max_x, map_max_y, pixelsize = pixel_size, stride = 2, fontsize=0.2, robot_pose=(rpos[0],rpos[1],0.4,0.8,90), mask=mask)
+
+
+
