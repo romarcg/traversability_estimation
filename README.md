@@ -5,10 +5,10 @@
 
 ## Learning Ground Traversability from Simulations
 
-Mobile robots operating on unstructured terrain must predict which areas of the environment they are able to pass in order to plan feasible paths and to react to unforeseen terrain patterns.
+Mobile ground robots operating on unstructured terrain must predict which areas of the environment they are able to pass in order to plan feasible paths.
 We address traversability estimation as a heightmap classification problem: we build a convolutional neural network that, given an image representing the heightmap of a terrain patch, predicts whether the robot will be able to traverse such patch from left to right.
-The classifier is trained for a specific wheeled robot model (but may implement any other locomotion type such as tracked, legged, snake-like), using simulation data on a variety of procedurally generated training terrains; once trained, the classifier can quickly be applied to patches extracted from unseen large heightmaps, in multiple orientations, thus building oriented traversability maps.
-We quantitatively validate the approach on real-world elevation datasets and implement a path planning approach that employs our traversability estimation.
+The classifier is trained for a specific robot model (wheeled, tracked, legged, snake-like) using simulation data on procedurally generated training terrains; the trained classifier can be applied to unseen large heightmaps to yield oriented traversability maps, and then plan traversable paths. We extensively evaluate the approach in simulation on six real-world elevation datasets, and run a real-robot validation in one indoor and one outdoor environment.
+
 
 ## Repository content:
 
