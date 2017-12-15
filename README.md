@@ -1,7 +1,8 @@
 > This repository contains complementary material for the corresponding submission.
 
-> **[Version of the document submission](submission/submission_ral_icra2018.pdf)** with **high-quality figures**.
+> **[Version of the document submission](submission/chavez-garcia_et_al_RAL.pdf)** with **high-quality figures**.
 
+> **[Document with difference report](submission/diff_man.pdf)**
 
 ## Learning Ground Traversability from Simulations
 
