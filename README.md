@@ -93,6 +93,23 @@ or by copying the `simulation` folder files to an existing `ros+gazebo` setup.
 
 Contains a document explaining in detail the procedural generation of heightmaps and a script that implements such procedure.
 
+Here are some examples of the generated heightmaps:
+
+<img src="code/dataset_generation_training/heightmaps/bars1.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/bumps1.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/holes1.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/rails1.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/slope_rocks1.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/steps1.png" width="100"/>
+
+<img src="code/dataset_generation_training/heightmaps/bars2.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/bumps2.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/holes2.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/rails2.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/slope_rocks2.png" width="100"/>
+<img src="code/dataset_generation_training/heightmaps/steps2.png" width="100"/>
+
+
 ### Dataset generation
 
 Contains a script that takes a csv file and builds a `dataframe` that is used to generate the training/evaluation/real-evaluation dataset.
