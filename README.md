@@ -4,7 +4,7 @@
 
 > **[Document with difference report](submission/diff_man.pdf)**
 
-## Learning Ground Traversability from Simulations
+## Abstract
 
 Mobile ground robots operating on unstructured terrain must predict which areas of the environment they are able to pass in order to plan feasible paths.
 We address traversability estimation as a heightmap classification problem: we build a convolutional neural network that, given an image representing the heightmap of a terrain patch, predicts whether the robot will be able to traverse such patch from left to right.
